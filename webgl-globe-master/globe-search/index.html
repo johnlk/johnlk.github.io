@@ -133,7 +133,6 @@
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         var data = JSON.parse(xhr.responseText);
-          console.log(data);
         window.data = data;
         globe.addData(data, {format: 'legend'});
         globe.createPoints();
