@@ -1,17 +1,10 @@
-//var info = [];
-//
-//for(var i = 0; i < 100; i++){
-//    info.push(parseFloat((Math.random()*180+1).toFixed(2)));
-//    info.push(parseFloat((Math.random()*180+1).toFixed(2)));
-//    info.push(parseFloat((Math.random()/2).toFixed(2)));
-//    info.push(Math.floor(Math.random() * 15) + 1);
-//}
-//
-//document.write(JSON.stringify(info));
-
 //https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat
 
 //https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat
+
+var countries = {
+    
+};
 
 var flights = new Array(67664);
 
@@ -46,6 +39,13 @@ function countFlights(airportAbriviation){
     return sum;
 }
 
+function getColor(country){
+    if(countries[country] == undefined){
+        countries[country] = Math.floor(Math.random() * 20) + 1;
+    }
+    return countries[country];
+}
+
 //busiest airpot ATL, flights 1826 per day, this will be max
 
 $.get('https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat', function(data) {
@@ -54,17 +54,20 @@ $.get('https://raw.githubusercontent.com/jpatokal/openflights/master/data/airpor
     
     setTimeout(function(){
         document.write('[');
+        //for(var i = 0; i < 100; i++){
         for(var i = 0; i < arr.length-1; i++){
             line = arr[i].split(',');
             document.write(line[6] + ',');
             document.write(line[7] + ',');
-            document.write((countFlights(line[4].substring(1, line[4].length-1))/3652) + 0.001 + ',');
-            document.write(Math.floor(Math.random()*20) + 1);
+            document.write(((countFlights(line[4].substring(1, line[4].length-1))/3652) + 0.001).toFixed(6) + ',');
+            document.write(getColor(line[3].substring(1, line[3].length-1)));
+            //if(i < 99){
             if(i < arr.length - 2){
                 document.write(',');
             }
         }
         document.write(']');
+        console.log(countries);
     },10); 
     
 });
