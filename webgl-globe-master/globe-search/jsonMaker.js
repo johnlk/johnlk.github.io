@@ -54,13 +54,13 @@ $.get('https://raw.githubusercontent.com/jpatokal/openflights/master/data/airpor
     
     setTimeout(function(){
         document.write('[');
-        for(var i = 0; i < arr.length; i++){
+        for(var i = 0; i < arr.length-1; i++){
             line = arr[i].split(',');
             document.write(line[6] + ',');
             document.write(line[7] + ',');
             document.write((countFlights(line[4].substring(1, line[4].length-1))/3652) + 0.001 + ',');
             document.write(Math.floor(Math.random()*20) + 1);
-            if(i < arr.length - 1){
+            if(i < arr.length - 2){
                 document.write(',');
             }
         }
