@@ -41,7 +41,7 @@ function countFlights(airportAbriviation){
 
 function getColor(country){
     if(countries[country] == undefined){
-        countries[country] = Math.floor(Math.random() * 20) + 1;
+        countries[country] = Math.floor(Math.random() * 23) + 1;
     }
     return countries[country];
 }
