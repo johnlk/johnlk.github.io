@@ -13,19 +13,59 @@
         margin-top: -4px;
       }
       p{
-        position: absolute;
-        top: 45%;
-        left: 36%;
-        background-color: gray;
-        width: 360px;
-        height: 36px;
-        font-size: 27px;
+        position: absolute;        
+        background-color: gray;        
         text-align: center;
         color: white;
       }
       video{
         position: absolute;        
       }
+      @media(min-width: 0px){
+        p{
+          top: 45%;
+          left: 20%;
+          font-size: 20px;
+          width: 290px;
+          height: 27px;
+        }
+        video{
+          width: 250px;
+          height: 400px;
+          top: 15%;
+          left: 22%;
+        }
+      }
+      @media(min-width: 500px){
+        p{
+          top: 45%;
+          left: 30%;
+          font-size: 22px;
+          width: 320px;
+          height: 30px;
+        }
+        video{
+          width: 300px;
+          height: 550px;
+          top: 5%;
+          left: 30%;
+        }
+      }
+      @media(min-width: 900px){
+        p{
+          top: 42%;
+          left: 34%;
+          width: 420px;
+          height: 38px;
+          font-size: 30px;
+        }
+        video{
+          top: -1%;
+          left: 35%;
+          width: 400px;
+          height: 650px;
+        }
+      }     
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
@@ -35,8 +75,7 @@
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
     
       ga('create', 'UA-87587092-1', 'auto');
-      ga('send', 'pageview');
-    
+      ga('send', 'pageview');    
     </script>
     <script>
       $(document).ready(function(){
@@ -67,8 +106,7 @@
           
           if (spins > milestone) {
             
-            $('body').append('<video autoplay style="width:' + pageWidth/3 + 'px; height:' + pageHeight/2 + ';' +
-                      'top:18%;left:35%;"><source src="buschLite.mp4" type="video/mp4"></video>');
+            $('body').append('<video autoplay><source src="buschLite.mp4" type="video/mp4"></video>');
             
             if (milestone == 100) {
                 milestone = 500;
@@ -81,10 +119,6 @@
             $('video').on('ended', function(){
               $('video').remove();
             });
-            
-            /*setTimeout(function(){
-              $('video').remove();
-            }, 7000);*/
             
           }
           
