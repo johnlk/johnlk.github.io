@@ -23,6 +23,9 @@
         text-align: center;
         color: white;
       }
+      video{
+        position: absolute;        
+      }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
@@ -39,21 +42,47 @@
         
         var totalDogs = numTall * numWide;
         
+        var count = 0;
         for(var i = 0; i < totalDogs; i++){
-          $('body').append('<img src="spin.gif" style="width: ' + pictureWidth + 'px; height: ' + pictureHeight + 'px;" />');
+          //setInterval(function(){
+            //if (count < totalDogs) {
+              $('body').append('<img src="spin.gif" style="width: ' + pictureWidth + 'px; height: ' + pictureHeight + 'px;" />');
+            //}
+            //count++;
+          //}, (4120 / totalDogs) + 4120);
         }
         
         var spins = 0;
+        var milestone = 100;
         
         setInterval(function(){
+          
           spins += totalDogs;
           $('p').html('You have witnessed ' + spins + ' spins.');
+          
+          if (spins > milestone) {
+            
+            $('body').append('<video autoplay style="width:' + pageWidth/3 + 'px; height:' + pageHeight/2 + ';' +
+                      'top:18%;left:35%;"><source src="buschLite.mp4" type="video/mp4"></video>');
+            
+            if (milestone == 100) {
+                milestone = 500;
+            }else if (milestone == 500) {
+                milestone = 1000;
+            }
+            
+            setTimeout(function(){
+              $('video').remove();
+            }, 7000);
+            
+          }
+          
         }, 4120);
         
       });
     </script>
   </head>
   <body>
-    <p>You have witnessed 0 spins.</p>
+    <p>You have witnessed 0 spins.</p>    
   </body>
 </html>
