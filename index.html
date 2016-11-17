@@ -54,12 +54,7 @@
         
         var count = 0;
         for(var i = 0; i < totalDogs; i++){
-          //setInterval(function(){
-            //if (count < totalDogs) {
-              $('body').append('<img src="spin.gif" style="width: ' + pictureWidth + 'px; height: ' + pictureHeight + 'px;" />');
-            //}
-            //count++;
-          //}, (4120 / totalDogs) + 4120);
+          $('body').append('<img src="spin.gif" style="width: ' + pictureWidth + 'px; height: ' + pictureHeight + 'px;" />');
         }
         
         var spins = 0;
@@ -83,9 +78,13 @@
               milestone += 1000;
             }
             
-            setTimeout(function(){
+            $('video').on('ended', function(){
               $('video').remove();
-            }, 7000);
+            });
+            
+            /*setTimeout(function(){
+              $('video').remove();
+            }, 7000);*/
             
           }
           
