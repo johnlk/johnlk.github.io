@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chihuahuas for dayz</title>
+    <style>
+      body{
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      img{
+        margin-top: -4px;
+      }
+      p{
+        position: absolute;
+        top: 45%;
+        left: 36%;
+        background-color: gray;
+        width: 360px;
+        height: 36px;
+        font-size: 27px;
+        text-align: center;
+        color: white;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        
+        var pageWidth = window.innerWidth;
+        var pageHeight = window.innerHeight;
+        
+        var numWide = 6;
+        var numTall = 4;
+        
+        var pictureWidth = pageWidth / numWide;
+        var pictureHeight = pageHeight / numTall;
+        
+        var totalDogs = numTall * numWide;
+        
+        for(var i = 0; i < totalDogs; i++){
+          $('body').append('<img src="spin.gif" style="width: ' + pictureWidth + 'px; height: ' + pictureHeight + 'px;" />');
+        }
+        
+        var spins = 0;
+        
+        setInterval(function(){
+          spins += totalDogs;
+          $('p').html('You have witnessed ' + spins + ' spins.');
+        }, 4120);
+        
+      });
+    </script>
+  </head>
+  <body>
+    <p>You have witnessed 0 spins.</p>
+  </body>
+</html>
