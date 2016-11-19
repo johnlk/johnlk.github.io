@@ -2,133 +2,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Chihuahuas for Dayz</title>
-    <meta name="Chihuahuas for Dayz" content="Come watch the chihuahuas spin and see how many spins you can achieve.">
+    <title>Page Change</title>
     <style>
       body{
         margin: 0;
         padding: 0;
         overflow: hidden;
+        background-color: #e6e6e6;
       }
-      img{
-        margin-top: -4px;
-      }
-      p{
-        position: absolute;        
-        background-color: gray;        
+      #holder{
+        position: absolute;
+        width: 850px;
+        height: 240px;
         text-align: center;
-        color: white;
+        font-size: 27px;
+        left: 16%;
+        top: 15%;
       }
-      video{
-        position: absolute;        
-      }
-      @media(min-width: 0px){
-        p{
-          top: 45%;
-          left: 20%;
-          font-size: 20px;
-          width: 290px;
-          height: 27px;
-        }
-        video{
-          width: 250px;
-          height: 400px;
-          top: 15%;
-          left: 22%;
-        }
-      }
-      @media(min-width: 500px){
-        p{
-          top: 45%;
-          left: 30%;
-          font-size: 22px;
-          width: 320px;
-          height: 30px;
-        }
-        video{
-          width: 300px;
-          height: 550px;
-          top: 5%;
-          left: 30%;
-        }
-      }
-      @media(min-width: 900px){
-        p{
-          top: 42%;
-          left: 34%;
-          width: 420px;
-          height: 38px;
-          font-size: 30px;
-        }
-        video{
-          top: -1%;
-          left: 35%;
-          width: 400px;
-          height: 650px;
-        }
-      }     
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-87587092-1', 'auto');
-      ga('send', 'pageview');    
-    </script>
-    <script>
-      $(document).ready(function(){
-        
-        var pageWidth = window.innerWidth;
-        var pageHeight = window.innerHeight;
-        
-        var numWide = Math.floor(pageWidth / 208) + 1;
-        var numTall = Math.floor(pageHeight / 200) + 1;
-        
-        var pictureWidth = pageWidth / numWide;
-        var pictureHeight = pageHeight / numTall;
-        
-        var totalDogs = numTall * numWide;
-        
-        var count = 0;
-        for(var i = 0; i < totalDogs; i++){
-          $('body').append('<img src="spin.gif" style="width: ' + pictureWidth + 'px; height: ' + pictureHeight + 'px;" />');
-        }
-        
-        var spins = 0;
-        var milestone = 100;
-        
-        setInterval(function(){
-          
-          spins += totalDogs;
-          $('p').html('You have witnessed ' + spins + ' spins.');
-          
-          if (spins > milestone) {
-            
-            $('body').append('<video autoplay><source src="buschLite.mp4" type="video/mp4"></video>');
-            
-            if (milestone == 100) {
-                milestone = 500;
-            }else if (milestone == 500) {
-                milestone = 1000;
-            }else{
-              milestone += 1000;
-            }
-            
-            $('video').on('ended', function(){
-              $('video').remove();
-            });
-            
-          }
-          
-        }, 4120);
-        
-      });
-    </script>
   </head>
   <body>
-    <p>You have witnessed 0 spins.</p>    
+    <div id="holder">
+      <h1>Chihuahua Spins is Now Hosted At:</h1>
+      <a href="http://chihuahuafordayz.com">chihuahuafordayz.com</a>
+    </div>
   </body>
 </html>
