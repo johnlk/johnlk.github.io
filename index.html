@@ -55,10 +55,10 @@
           $(this).css('background-color', '#4dff4d');
           
           var speed = parseFloat($('#speed').val());
-          var distance = 10 * 0.3048;//10 feet in meters
+          var distance = 15 * 0.3048;//10 feet in meters
           speed = speed / distance;//meters per second
           
-          var time = 0.0;
+          var time = 0.0;//in seconds
           var billion = 1000000000;
           var million = 1000000;
           
@@ -92,19 +92,25 @@
               break;
           }
           
-          $('#days').val("" + Math.floor(time/86400));
+          console.log(time);
           
-          time -= Math.floor(Math.floor(time/86400) * 86400);
+          $('#years').val("" + Math.floor(time/(86400*365)));
           
-          $('#hours').val("" + Math.floor(time/3600));
+          time -= Math.floor(time/(86400*365)) * (86400*365);
           
-          time -= Math.floor(Math.floor(time/3600) * 3600);
+          $('#days').val("" + Math.floor(time/(86400)));
           
-          $('#mins').val("" + Math.floor(time/60));
+          time -= Math.floor(time/(86400)) * 86400;
           
-          time -= Math.floor(Math.floor(time/3600) * 60);
+          $('#hours').val("" + Math.floor(time/(3600)));
           
-          $('#secs').val("" + time);
+          time -= Math.floor(time/(3600)) * 3600;
+          
+          $('#mins').val("" + Math.floor(time/(60)));
+          
+          time -= Math.floor(time/(60)) * 60;
+          
+          $('#secs').val("" + Math.floor(time));
           
         });
         
@@ -112,7 +118,7 @@
     </script>
   </head>
   <body>
-    <p id="header">Time Taken to Run 10 Feet</p>
+    <p id="header">Time Taken to Run 15 Feet</p>
     <input id="speed" type="text">Seconds
     <p id="time">Time Reqired to Travel to:</p>
     <div class="planet">Sun</div>
@@ -125,6 +131,7 @@
     <div class="planet">Neptune</div>
     <div class="planet">Pluto</div>
     <div id="output">
+      <p><input id="years" readonly></input>Years</p>
       <p><input id="days" readonly></input>Days</p>
       <p><input id="hours" readonly></input>Hours</p>
       <p><input id="mins" readonly></input>Minutes</p>
