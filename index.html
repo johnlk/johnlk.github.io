@@ -1,30 +1,126 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Page Change</title>
+    <title>Planet Distances</title>
     <style>
       body{
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #e6e6e6;
+        /*background: img('http://7-themes.com/data_images/out/51/6946579-space-stars-background.jpg');*/
+        background-color: #f2f2f2;
       }
-      #holder{
-        position: absolute;
-        width: 850px;
-        height: 240px;
+      #header{
+        font-size: 30px;
+        margin-left: 36%;
+      }
+      #speed{
+        margin-left: 40%;        
+      }
+      input{
+        height: 18px;
+        width: 200px;
+        margin-right: 10px;
+      }
+      #time{
+        font-size: 28px;
+        margin-left: 37.5%;
+        margin-top: 54px;
+      }
+      .planet{
+        font-size: 20px;
+        border: 1px solid;
+        width: 85px;
+        height: 25px;
         text-align: center;
-        font-size: 27px;
-        left: 16%;
-        top: 15%;
+        display: inline-block;
+        margin: 0 22px;
+        background-color: white;
+      }
+      .planet:hover{
+        cursor: pointer;
+      }
+      #output{
+        margin-left: 40%;
+        margin-top: 63px;
       }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        
+        $('.planet').on('click', function(){
+          
+          $('.planet').css('background-color', 'white');
+          $(this).css('background-color', '#4dff4d');
+          
+          var speed = parseFloat($('#speed').val());
+          var distance = 10 * 0.3048;//10 feet in meters
+          speed = speed / distance;//meters per second
+          
+          var time = 0.0;
+          
+          switch ($(this).html()) {
+            case 'Sun':
+              time = 149.9*(1000000000) / speed;
+              break;
+            case 'Mercury':
+              time = 7.71*(1000000000) / speed;
+              break;
+            case 'Venus':
+              time = 2.61*(1000000000) / speed;
+              break;
+            case 'Mars':
+              time = 4.01*(1000000000) / speed;
+              break;
+            case 'Jupiter':
+              time = 5.88*(1000000000) / speed;
+              break;
+            case 'Saturn':
+              time = 120.1*(1000000000) / speed;
+              break;
+            case 'Uranus':
+              time = 300.1*(1000000000) / speed;
+              break;
+            case 'Neptune':
+              time = 4700.1*(1000000000) / speed;
+              break;
+            case 'Pluto':
+              time = 7500.1*(1000000000) / speed;
+              break;
+          }
+          
+          $('#days').val(Math.floor(time/ 86400));
+          time -= Math.floor(time/ 86400) * 86400;
+          $('#hours').val(Math.floor(time/ 3600));
+          time -= Math.floor(time/ 3600) * 3600;
+          $('#mins').val(Math.floor(time/ 60));
+          time -= Math.floor(time/ 3600) * 60;
+          $('#secs').val(time);
+          
+        });
+        
+      });
+    </script>
   </head>
   <body>
-    <div id="holder">
-      <h1>Chihuahua Spins is Now Hosted At:</h1>
-      <a href="http://chihuahuafordayz.com">chihuahuafordayz.com</a>
-    </div>
+    <p id="header">Time Taken to Run 10 Feet</p>
+    <input id="speed" type="text">Seconds
+    <p id="time">Time Reqired to Travel to:</p>
+    <div class="planet">Sun</div>
+    <div class="planet">Mercury</div>
+    <div class="planet">Venus</div>
+    <div class="planet">Mars</div>
+    <div class="planet">Jupiter</div>
+    <div class="planet">Saturn</div>
+    <div class="planet">Uranus</div>
+    <div class="planet">Neptune</div>
+    <div class="planet">Pluto</div>
+    <div id="output">
+      <p><input id="days" readonly></input>Days</p>
+      <p><input id="hours" readonly></input>Hours</p>
+      <p><input id="mins" readonly></input>Minutes</p>
+      <p><input id="secs" readonly></input>Seconds</p>
+    </div>    
   </body>
 </html>
