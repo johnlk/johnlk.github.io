@@ -56,7 +56,7 @@
           
           var speed = parseFloat($('#speed').val());
           var distance = 15 * 0.3048;//10 feet in meters
-          speed = speed / distance;//meters per second
+          speed = distance / speed;//meters per second
           
           var time = 0.0;//in seconds
           var billion = 1000000000;
