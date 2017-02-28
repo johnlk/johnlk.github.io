@@ -1,141 +1,173 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Planet Distances</title>
-    <style>
-      body{
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        /*background: img('http://7-themes.com/data_images/out/51/6946579-space-stars-background.jpg');*/
-        background-color: #f2f2f2;
-      }
-      #header{
-        font-size: 30px;
-        margin-left: 36%;
-      }
-      #speed{
-        margin-left: 40%;        
-      }
-      input{
-        height: 18px;
-        width: 200px;
-        margin-right: 10px;
-      }
-      #time{
-        font-size: 28px;
-        margin-left: 37.5%;
-        margin-top: 54px;
-      }
-      .planet{
-        font-size: 20px;
-        border: 1px solid;
-        width: 85px;
-        height: 25px;
-        text-align: center;
-        display: inline-block;
-        margin: 0 22px;
-        background-color: white;
-      }
-      .planet:hover{
-        cursor: pointer;
-      }
-      #output{
-        margin-left: 40%;
-        margin-top: 63px;
-      }
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script>
-      $(document).ready(function(){
-        
-        $('.planet').on('click', function(){
-          
-          $('.planet').css('background-color', 'white');
-          $(this).css('background-color', '#4dff4d');
-          
-          var speed = parseFloat($('#speed').val());
-          var distance = 15 * 0.3048;//10 feet in meters
-          speed = distance / speed;//meters per second
-          
-          var time = 0.0;//in seconds
-          var billion = 1000000000;
-          var million = 1000000;
-          
-          switch ($(this).html()) {
-            case 'Sun':
-              time = (149.6*billion) / speed;
-              break;
-            case 'Mercury':
-              time = (75.001*million*1000) / speed;
-              break;
-            case 'Venus':
-              time = (261.001*million*1000) / speed;
-              break;
-            case 'Mars':
-              time = (225.001*million*1000) / speed;
-              break;
-            case 'Jupiter':
-              time = (588.001*million*1000) / speed;
-              break;
-            case 'Saturn':
-              time = (1.2001*billion*1000) / speed;
-              break;
-            case 'Uranus':
-              time = (3.2001*billion*1000) / speed;
-              break;
-            case 'Neptune':
-              time = (4.7001*billion*1000) / speed;
-              break;
-            case 'Pluto':
-              time = (4.2801*billion*1000) / speed;
-              break;
-          }
-          
-          console.log(time);
-          
-          $('#years').val("" + Math.floor(time/(86400*365)));
-          
-          time -= Math.floor(time/(86400*365)) * (86400*365);
-          
-          $('#days').val("" + Math.floor(time/(86400)));
-          
-          time -= Math.floor(time/(86400)) * 86400;
-          
-          $('#hours').val("" + Math.floor(time/(3600)));
-          
-          time -= Math.floor(time/(3600)) * 3600;
-          
-          $('#mins').val("" + Math.floor(time/(60)));
-          
-          time -= Math.floor(time/(60)) * 60;
-          
-          $('#secs').val("" + Math.floor(time));
-          
-        });
-        
-      });
-    </script>
-  </head>
-  <body>
-    <p id="header">Time Taken to Run 15 Feet</p>
-    <input id="speed" type="text">Seconds
-    <p id="time">Time Reqired to Travel to:</p>
-    <div class="planet">Sun</div>
-    <div class="planet">Mercury</div>
-    <div class="planet">Venus</div>
-    <div class="planet">Mars</div>
-    <div class="planet">Jupiter</div>
-    <div class="planet">Saturn</div>
-    <div class="planet">Uranus</div>
-    <div class="planet">Neptune</div>
-    <div class="planet">Pluto</div>
-    <div id="output">
-      <p><input id="years" readonly></input>Years</p>
-      <p><input id="days" readonly></input>Days</p>
-      <p><input id="hours" readonly></input>Hours</p>
-      <p><input id="mins" readonly></input>Minutes</p>
-      <p><input id="secs" readonly></input>Seconds</p>
-    </div>    
-  </body>
+<head>
+<title>John Kuhn Resume</title>
+<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+<div id="cv" class="instaFade">
+	<div class="mainDetails">
+		<div id="headshot" class="quickFade">
+			<img src="http://www.peakey.com/data/articles/f08b4220-883f-4a12-8dfd-bc86e4729226/john.png" alt="John Kuhn" />
+		</div>
+		
+		<div id="name">
+			<h1 class="quickFade delayTwo">John Kuhn</h1>
+			<h2 class="quickFade delayThree">Software Developer</h2>
+		</div>
+		
+		<div id="contactDetails" class="quickFade delayFour">
+			<ul>
+				<li><strong>Email:</strong> <a href="mailto:jlkuhn@purdue.edu" target="_blank">jlkuhn@purdue.edu</a></li>
+				<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/john-kuhn-97733811b">linkedin.com/in/john-kuhn-97733811b</a></li>
+                <li><strong>Git Hub:</strong> <a href="https://github.com/johnlk">github.com/johnlk</a></li>
+				<li><strong>Cell:</strong> (219) 393-0639</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="mainArea" class="quickFade delayFive">
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Personal Profile</h1>
+				</div>
+				
+				<div class="sectionContent">
+					<p>Outstanding student with experience in programming seeks opportunity to continue to develop skills with a professional internship.</p>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+		
+		<section>
+		  <div class="sectionTitle">
+		    <h1>Awards</h1>
+		  </div>
+		  <div class="sectionContent">
+              
+            <article>
+		      <h2>National Finalist in C++ and Java</h2>
+		      <p class="subDetails">May 2016</p>
+		      <p>Competing in Boston, I was able to place Nationally for development in C++ and Java. Competition hosted by Business Professional of America.</p>
+		    </article>
+              
+		    <article>
+		      <h2>1st in Indiana's Java Programming Competition</h2>
+		      <p class="subDetails">March 2015</p>
+		      <p>Developed in Java and earned a perfect score to win a state programming competition in March of 2015. Competition hosted by Business Professionals of America.</p>
+		    </article>
+		    
+		    <article>
+		      <h2>Rotary Impact Award</h2>
+		      <p class="subDetails">May 2015</p>
+		      <p>Received award for my outstanding work and involvement within Business Professionals of America.</p>
+		    </article>
+              
+            <article>
+		      <h2>AP Scholar Award</h2>
+		      <p class="subDetails">July 2015</p>
+		      <p>College Board recognized for having excellent AP scores in 2015.</p>
+		    </article>
+		    
+		    <article>
+		      <h2>Academics</h2>
+		      <p>Graduated Summa Cum Laude in top 3% of my class. Winner of Scholar awards for top ECA scores 2013 and 2014. Graduated May 2016 from Warsaw Community High School.</p>
+		    </article>
+		  </div>
+		  <div class="clear"></div>
+		</section>
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Key Skills</h1>
+			</div>
+			
+			<div class="sectionContent">
+				<ul class="keySkills">
+					<li>JavaScript</li>                    
+					<li>jQuery</li>
+					<li>HTML & CSS</li>
+                    <li>SQL</li>
+                    <li>Java</li>
+                    <li>C#</li>
+					<li>C++</li>
+                    <li>C</li>
+					<li>PHP</li>
+					<li>Gimp</li>
+                    <li>CAD Software</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Work Experience</h1>
+			</div>
+			
+			<div class="sectionContent">
+				<article>
+					<h2>Peakey Enterprise LLC.</h2>
+					<p class="subDetails">June 2015 to August 2016</p>
+					<p>Working as a full stack developer, I assisted Peakey in the maintenance of several of their client websites and web applications, as well as develop new products. Products I created include Axiom, a mobile development platform(<a href="http://axiom.peakey.com/">axiom.peakey.com</a>), and Peakey's PBX software for phones.</p>
+				</article>
+			</div>
+            
+            <div class="sectionContent">
+				<article>
+					<h2>Tecomet Internship</h2>
+					<p class="subDetails">Spring 2016</p>
+					<p>Working in Tecomet's IT department I was able to learn about various aspects of data storage, security, and hardware. I helped trouble shoot problems the company faced day to day.</p>
+				</article>
+			</div>
+			
+			<div class="sectionContent">
+				<article>
+					<h2>DePuy Internship</h2>
+					<p class="subDetails">Fall 2015</p>
+					<p>Working with the IT department I was able to assist in meeting management and online procedure list coordinating. Advanced my skills in Excel and communication.</p>
+				</article>
+			</div>          
+            
+			<div class="clear"></div>
+		</section>
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Volunteer Experiences</h1>
+			</div>
+			
+			<div class="sectionContent">
+				<article>
+					<h2>5k-9 Run</h2>
+					<p class="subDetails">Spring 2015</p>
+					<p>Founded the first ever 5k event to benefit the Kosciusko Animal Welfare League. I organized and planned all aspects of the event, and was able to raise over $1600 for the local shelter to assist with their new building project.</p>
+				</article>
+				
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+<!--
+		<section>
+			<div class="sectionTitle">
+				<h1>Leadership Positions</h1>
+			</div>
+			
+			<div class="sectionContent">
+				<ul class="extra">
+					<li>KYLA Board Member</li>
+					<li>Master Counselor of DeMolay</li>
+					<li>President of National Honor Society</li>
+					<li>President of Business Professionals of America</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</section>
+-->
+	</div>
+</div>
+</body>
 </html>
