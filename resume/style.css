@@ -16,7 +16,6 @@ html, body {
     font-family: 'Lato', helvetica, arial, sans-serif;
     font-size: 16px;
     color: #222;
-    overflow: hidden;
 }
 
 .clear {clear: both;}
