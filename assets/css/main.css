@@ -318,16 +318,17 @@
 
 	.webpage-title:hover {
 		cursor: pointer;
-		text-decoration: underline;
 	}
 
 	.webpage-title h1 {
 		font-size: 17px;
+		text-decoration: underline;
+		text-align: center;
 	}
 
 	.work-listing {
 		display: inline-block;
-		margin-right: 11px;
+		margin: 0 0 3% 2.5%;
 	}
 
 /* Form */
