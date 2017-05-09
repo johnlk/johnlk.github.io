@@ -47,11 +47,6 @@
 	body {
 		-webkit-text-size-adjust: none;
 	}
-	
-	iframe{
-	  width: 100%;
-	  height: 1640px;
-	}
 
 /* Box Model */
 
@@ -283,6 +278,56 @@
 
 	.align-right {
 		text-align: right;
+	}
+
+	.thumbnail iframe {
+		width: 1050px;
+		height: 800px;
+		opacity: 0;
+		transition: all 300ms ease-in-out;
+	}
+
+	.thumbnail {
+		position: relative;
+		-ms-zoom: 0.25;
+		-moz-transform: scale(0.25);
+		-moz-transform-origin: 0 0;
+		-o-transform: scale(0.25);
+		-o-transform-origin: 0 0;
+		-webkit-transform: scale(0.25);
+		-webkit-transform-origin: 0 0;
+	}
+
+	.thumbnail:after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.tumbnail-container {
+		width: calc(1050px * 0.25);
+		height: calc(800px * 0.25);
+		display: inline-block;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.webpage-title:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+
+	.webpage-title h1 {
+		font-size: 17px;
+	}
+
+	.work-listing {
+		display: inline-block;
+		margin-right: 11px;
 	}
 
 /* Form */
