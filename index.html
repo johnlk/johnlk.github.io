@@ -149,7 +149,7 @@
 						$.ajax({
 						    url: urls[i],
 						    success:function(msg){
-						      $('.site-sample').eq(i).load(msg);
+						      $('.site-sample').eq(i).html(msg);
 						    },
 						    errof:function(e){
 						    	console.log(e);
