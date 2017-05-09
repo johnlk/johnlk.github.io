@@ -283,7 +283,6 @@
 	.thumbnail iframe {
 		width: 1050px;
 		height: 800px;
-		opacity: 0;
 		transition: all 300ms ease-in-out;
 	}
 
