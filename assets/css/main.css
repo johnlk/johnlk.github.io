@@ -280,18 +280,11 @@
 		text-align: right;
 	}
 
-	.thumbnail iframe {
+	.thumbnail iframe, .thumbnail img {
 		width: 1050px;
 		height: 800px;
 		opacity: 1;
 		transition: all 300ms ease-in-out;
-	}
-
-	.thumbnail .site-sample {
-		width: 1050px;
-		height: 800px;
-		opacity: 1;
-		background-color: pink;
 	}
 
 	.thumbnail {
@@ -336,6 +329,7 @@
 	.work-listing {
 		display: inline-block;
 		margin: 0 0 3% 2.5%;
+		text-align: center;
 	}
 
 /* Form */
