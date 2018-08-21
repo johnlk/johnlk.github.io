@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Images</title>
+    <style>
+        .image { max-width: 20%; }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var thumbnails = $('#thumbnails');
+            var images = "IMG_0459.JPG IMG_0460.JPG IMG_0461.JPG IMG_0462.JPG IMG_0463.JPG IMG_0464.JPG IMG_0465.JPG IMG_0466.JPG IMG_0467.JPG IMG_0468.JPG IMG_0469.JPG IMG_0470.JPG IMG_0471.JPG IMG_0472.JPG IMG_0473.JPG IMG_0474.JPG IMG_0475.JPG IMG_0476.JPG IMG_0477.JPG IMG_0478.JPG IMG_0479.JPG IMG_0480.JPG IMG_0482.JPG IMG_0483.JPG IMG_0484.JPG IMG_0485.JPG IMG_0486.JPG IMG_0487.JPG IMG_0488.JPG IMG_0489.JPG IMG_0490.JPG IMG_0491.JPG IMG_0492.JPG IMG_0493.JPG IMG_0494.JPG IMG_0495.JPG IMG_0496.JPG".split(' ');
+            for(i in images){
+                var image = images[i];
+                thumbnails.append('<a href="./images/' + image + '"><img src="./images/' + image + '" class="image"/></a>');
+            }
+        });
+    </script>
+  </head>
+  <body>
+    <a href="./">Back to blog</a>
+    <div id="thumbnails">
+    </div>
+  </body>
+</html>
