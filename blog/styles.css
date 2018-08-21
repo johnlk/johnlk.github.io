@@ -1,0 +1,43 @@
+#main_header {
+    font-size: 50px;
+    text-align: center;
+}
+#main_image {
+    max-width: 95%;
+    display: block;
+    margin: 5px auto;
+}
+#quick_links {
+    text-align: center;
+}
+#quick_links > a {
+    margin: 0 5px;
+}
+#blog_explanation {
+    width: 80%;
+    margin: 50px auto;
+}
+#post_links {
+
+}
+#post_links > h1 {
+
+}
+#post_links > a {
+
+}
+.post {
+    margin: 10px auto;
+}
+.post_header {
+    font-size: 25px;
+}
+.post_image {
+    display: block;
+    max-width: 80%;
+    margin: 0 auto;
+}
+.post > p {
+    margin: 20px auto;
+    width: 90%;
+}
