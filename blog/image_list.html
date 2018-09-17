@@ -2,33 +2,52 @@
 <html>
   <head>
     <title>Images</title>
-    <style>
-        .image { max-width: 20%; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+
+    <link rel="stylesheet" href="styles/gallery-grid.css">
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124965103-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'UA-124965103-1');
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            var thumbnails = $('#thumbnails');
-            var images = "IMG_0459.JPG IMG_0460.JPG IMG_0461.JPG IMG_0462.JPG IMG_0463.JPG IMG_0464.JPG IMG_0465.JPG IMG_0466.JPG IMG_0467.JPG IMG_0468.JPG IMG_0469.JPG IMG_0470.JPG IMG_0471.JPG IMG_0472.JPG IMG_0473.JPG IMG_0474.JPG IMG_0475.JPG IMG_0476.JPG IMG_0477.JPG IMG_0478.JPG IMG_0479.JPG IMG_0480.JPG IMG_0482.JPG IMG_0483.JPG IMG_0484.JPG IMG_0485.JPG IMG_0486.JPG IMG_0487.JPG IMG_0488.JPG IMG_0489.JPG IMG_0490.JPG IMG_0491.JPG IMG_0492.JPG IMG_0493.JPG IMG_0494.JPG IMG_0495.JPG IMG_0496.JPG IMG_0501.JPG IMG_0502.JPG IMG_0506.JPG IMG_0508.JPG IMG_0511.JPG IMG_0513.JPG IMG_0514.JPG IMG_0515.JPG IMG_0516.JPG IMG_0524.JPG IMG_0525.JPG IMG_0526.JPG IMG_0527.JPG IMG_0528.JPG IMG_0530.JPG IMG_0531.JPG IMG_0532.JPG IMG_0534.JPG IMG_0535.JPG IMG_0536.JPG IMG_0537.JPG IMG_0545.JPG IMG_0547.JPG IMG_0548.JPG IMG_0554.JPG IMG_0563.JPG".split(' ');
-            for(i in images){
-                var image = images[i];
-                thumbnails.append('<a href="./images/' + image + '"><img src="./images/' + image + '" class="image"/></a>');
-            }
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
   </head>
   <body>
-    <a href="./">Back to blog</a>
-    <div id="thumbnails">
+
+    <div class="container gallery-container">
+        <a href="./index.html">Back to blog</a>
+
+        <div class="tz-gallery">
+            <div class="row">
+            
+            </div>
+        </div>
     </div>
+
+    <script>
+        $(document).ready(function(){
+            var gallery_row = $('.row');
+            var images = "IMG_0459.JPG IMG_0460.JPG IMG_0461.JPG IMG_0462.JPG IMG_0463.JPG IMG_0464.JPG IMG_0465.JPG IMG_0466.JPG IMG_0467.JPG IMG_0468.JPG IMG_0469.JPG IMG_0470.JPG IMG_0471.JPG IMG_0472.JPG IMG_0473.JPG IMG_0474.JPG IMG_0475.JPG IMG_0476.JPG IMG_0477.JPG IMG_0478.JPG IMG_0479.JPG IMG_0480.JPG IMG_0482.JPG IMG_0483.JPG IMG_0484.JPG IMG_0485.JPG IMG_0486.JPG IMG_0487.JPG IMG_0488.JPG IMG_0489.JPG IMG_0490.JPG IMG_0491.JPG IMG_0492.JPG IMG_0493.JPG IMG_0494.JPG IMG_0495.JPG IMG_0496.JPG IMG_0501.JPG IMG_0502.JPG IMG_0506.JPG IMG_0508.JPG IMG_0511.JPG IMG_0513.JPG IMG_0514.JPG IMG_0515.JPG IMG_0516.JPG IMG_0524.JPG IMG_0525.JPG IMG_0526.JPG IMG_0527.JPG IMG_0528.JPG IMG_0530.JPG IMG_0531.JPG IMG_0532.JPG IMG_0534.JPG IMG_0535.JPG IMG_0536.JPG IMG_0537.JPG IMG_0545.JPG IMG_0547.JPG IMG_0548.JPG IMG_0554.JPG IMG_0563.JPG IMG_0581.JPG IMG_0582.JPG IMG_0591.JPG IMG_0592.JPG IMG_0593.JPG IMG_0595.JPG IMG_0596.JPG IMG_0597.JPG IMG_0602.JPG IMG_0610.JPG IMG_0611.JPG IMG_0612.JPG IMG_0615.JPG IMG_0616.JPG IMG_0617.JPG IMG_0618.JPG IMG_0619.JPG IMG_0621.JPG IMG_0624.JPG IMG_0625.JPG IMG_0626.JPG IMG_0628.JPG IMG_0629.JPG IMG_0630.JPG IMG_0632.JPG IMG_0640.JPG IMG_0641.JPG IMG_0645.JPG IMG_0650.JPG IMG_0652.JPG IMG_0657.JPG IMG_0658.JPG IMG_0661.JPG IMG_0663.JPG IMG_0667.JPG IMG_0673.JPG IMG_0674.JPG IMG_0677.JPG IMG_0678.JPG IMG_0679.JPG IMG_0682.JPG IMG_0691.JPG IMG_0693.JPG IMG_0694.JPG IMG_0695.JPG IMG_0702.JPG IMG_0704.JPG IMG_0706.JPG IMG_0712.JPG IMG_0719.JPG IMG_0722.JPG IMG_0727.JPG IMG_0730.JPG IMG_0731.JPG IMG_0736.JPG".split(' ');
+            for(i in images){
+                var image = images[i];
+                gallery_row
+                    .append('<div class="col-sm-6 col-md-4">' +
+                                '<a class="lightbox" href="./images/' + image + '">' +
+                                    '<img src="./images/' + image + '" >' +
+                                '</a>' +
+                            '</div>');
+            }
+            baguetteBox.run('.tz-gallery');
+        });
+    </script>
   </body>
 </html>

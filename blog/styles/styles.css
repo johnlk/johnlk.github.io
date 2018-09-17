@@ -1,0 +1,74 @@
+body {
+    padding: 15px;
+}
+#main_header {
+    font-size: 50px;
+    text-align: center;
+}
+#main_image {
+    max-width: 95%;
+    display: block;
+    margin: 5px auto;
+}
+#quick_links {
+    text-align: center;
+}
+#quick_links > a {
+    margin: 0 5px;
+}
+#blog_explanation {
+    width: 80%;
+    margin: 50px auto;
+}
+#post_links {
+
+}
+#post_links > h1 {
+
+}
+#post_links > a {
+    margin: 0 10px;
+}
+.post {
+    margin: 10px auto;
+}
+.post_header {
+    font-size: 25px;
+}
+.post_image {
+    display: block;
+    max-width: 80%;
+    margin: 0 auto;
+}
+.post > p {
+    margin: 20px auto;
+    width: 90%;
+}
+
+
+/*jssor slider loading skin spin css*/
+.jssorl-009-spin img {
+    animation-name: jssorl-009-spin;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes jssorl-009-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/*jssor slider bullet skin 051 css*/
+.jssorb051 .i {position:absolute;cursor:pointer;}
+.jssorb051 .i .b {fill:#fff;fill-opacity:0.5;}
+.jssorb051 .i:hover .b {fill-opacity:.7;}
+.jssorb051 .iav .b {fill-opacity: 1;}
+.jssorb051 .i.idn {opacity:.3;}
+
+/*jssor slider arrow skin 051 css*/
+.jssora051 {display:block;position:absolute;cursor:pointer;}
+.jssora051 .a {fill:none;stroke:#fff;stroke-width:360;stroke-miterlimit:10;}
+.jssora051:hover {opacity:.8;}
+.jssora051.jssora051dn {opacity:.5;}
+.jssora051.jssora051ds {opacity:.3;pointer-events:none;}
