@@ -1,3 +1,2 @@
 # Example Portfolio Site
-
-Site found [here](https://johnlk.github.io)
+Site is currenlty under re-construction 
