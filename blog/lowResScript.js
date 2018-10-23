@@ -3,7 +3,8 @@ $(document).ready(() => {
 
     for(var i = 0; i < all_images.length; i++) {
         if(all_images[i].src.indexOf('http') == -1){
-            createLowResTwin(all_images.eq(i));
+            all_images[i].src = all_images[i].src.replace('.JPG', '_low.JPG');
+            //createLowResTwin(all_images.eq(i));
         }
     }
 
