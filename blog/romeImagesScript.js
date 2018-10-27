@@ -6,8 +6,8 @@
                 image = image.replace('.JPG', '_low.JPG');
                 gallery_row
                     .append('<div class="col-sm-6 col-md-4">' +
-                                '<a class="lightbox" href="./images/' + image + '">' +
-                                    '<img src="./images/' + image + '" >' +
+                                '<a class="lightbox" href="../images/' + image + '">' +
+                                    '<img src="../images/' + image + '" >' +
                                 '</a>' +
                             '</div>');
             }
