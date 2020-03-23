@@ -1,2 +1,2 @@
 # Example Portfolio Site
-Site is currenlty under re-construction 
+Site is currently under re-construction 
