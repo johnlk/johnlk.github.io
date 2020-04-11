@@ -1,197 +1,127 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-87587092-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-87587092-1');
-  </script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Some of my luckier thoughts live here">
-  <meta name="author" content="John Kuhn">
-
-  <title>John Kuhn Tech Blog</title>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Fonts -->
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-  <link href="../css/clean-blog.min.css" rel="stylesheet">
-</head>
-<body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="../index.html">Home</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="../swedish-blog/index.html">Swedish Blog</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Page Header -->
-  <header class="masthead">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-heading" style="padding: 100px 0;">
-            <h1>Auto-convert .HEIC files in your Downloads directory</h1>
-            <!-- <h2 class="subheading"></h2> -->
-            <span class="meta">Posted on March 22, 2020</span>
-          </div>
+<!-- Page Header -->
+<header class="masthead">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading" style="padding: 100px 0;">
+          <h1>Auto-convert .HEIC files in your Downloads directory</h1>
+          <!-- <h2 class="subheading"></h2> -->
+          <span class="meta">Posted on March 22, 2020</span>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- Post Content -->
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <p>
-            Apple with the release of their XR phones have decided to make another part
-            of my life just a little bit more annoying. I'm sure you've experienced it if
-            you've ever tried to upload one of your iPhone photos. Apple is now using
-            the .HEIC (high efficiency image compression) file format for their photos,
-            which means you can't just airdrop and go when trying to impress your friends
-            on slack or any other major application.
-          </p>
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p>
+          Apple with the release of their XR phones have decided to make another part
+          of my life just a little bit more annoying. I'm sure you've experienced it if
+          you've ever tried to upload one of your iPhone photos. Apple is now using
+          the .HEIC (high efficiency image compression) file format for their photos,
+          which means you can't just airdrop and go when trying to impress your friends
+          on slack or any other major application.
+        </p>
 
-          <h2 class="section-heading">The goal</h2>
+        <h2 class="section-heading">The goal</h2>
 
-          <p>
-            Automatically convert all <code>.HEIC</code> photos to <code>.jpg</code> when
-            added to our <code>~/Downloads</code> directory.
-          </p>
+        <p>
+          Automatically convert all <code>.HEIC</code> photos to <code>.jpg</code> when
+          added to our <code>~/Downloads</code> directory.
+        </p>
 
-          <p>
-            We can use <code>fswatch</code> to wait for changes to the downloads directory,
-            then convert the image files to jpg with a command line tool called <code>imagemagick</code>.
-            Simple enough.
-          </p>
+        <p>
+          We can use <code>fswatch</code> to wait for changes to the downloads directory,
+          then convert the image files to jpg with a command line tool called <code>imagemagick</code>.
+          Simple enough.
+        </p>
 
-          <h2 class="section-heading">Setup</h2>
+        <h2 class="section-heading">Setup</h2>
 
-          <p>
-            Let's install
-            <code>fswatch</code> which works for all major operating systems. I'm working on a
-            mac so I'm going to install with <a href="https://brew.sh/">Homebrew</a>:
-          </p>
+        <p>
+          Let's install
+          <code>fswatch</code> which works for all major operating systems. I'm working on a
+          mac so I'm going to install with <a href="https://brew.sh/">Homebrew</a>:
+        </p>
 
-          <code>$ brew install fswatch</code>
+        <code>$ brew install fswatch</code>
 
-          <p>
-            Following fswatch's <a href="https://github.com/emcrisostomo/fswatch/wiki/How-to-Use-fswatch">documentation</a>
-            we can watch for our Downloads directory with this command. 
-          </p>
-          
-          <code>$ fswatch -0 ~/Downloads | xargs -0 -I {} sh -c 'echo ${}'</code>
+        <p>
+          Following fswatch's <a href="https://github.com/emcrisostomo/fswatch/wiki/How-to-Use-fswatch">documentation</a>
+          we can watch for our Downloads directory with this command. 
+        </p>
+        
+        <code>$ fswatch -0 ~/Downloads | xargs -0 -I {} sh -c 'echo ${}'</code>
 
-          <p>
-            This will listen for changes on our Downloads directory and then spit out changes
-            to std output. The <code>xargs</code> command is cleaning up our input by ignoring null spaces
-            and passing off our file name. Now if we can run this command and add a file to our
-            downloads directory we'll see this.
-          </p>
+        <p>
+          This will listen for changes on our Downloads directory and then spit out changes
+          to std output. The <code>xargs</code> command is cleaning up our input by ignoring null spaces
+          and passing off our file name. Now if we can run this command and add a file to our
+          downloads directory we'll see this.
+        </p>
 
-          <img class="img-fluid" src="https://blog123videos.s3.amazonaws.com/tech-blog/file_output.png" alt="">
-          <span class="caption text-muted">Output after adding files to downloads directory</span>
+        <img class="img-fluid" src="https://blog123videos.s3.amazonaws.com/tech-blog/file_output.png" alt="">
+        <span class="caption text-muted">Output after adding files to downloads directory</span>
 
-          <p>
-            That's great but now we need a way to convert heic files from the command line.
-            Let's install <code>imagemagick</code> with:
-          </p>
+        <p>
+          That's great but now we need a way to convert heic files from the command line.
+          Let's install <code>imagemagick</code> with:
+        </p>
 
-          <code>$ brew install imagemagick</code>
+        <code>$ brew install imagemagick</code>
 
-          <p>
-            This allows us to run something like this to convert our file.
-          </p>
+        <p>
+          This allows us to run something like this to convert our file.
+        </p>
 
-          <code>$ magick convert example_image.HEIC example_image.jpg</code>
+        <code>$ magick convert example_image.HEIC example_image.jpg</code>
 
-          <p>
-            Great! We're almost there. We just need our bash script to look for heic files
-            and then use our magick converter. If you're a masochist you can try to come
-            up with the bash script on your own. Otherwise, I'll show you mine.
-          </p>
+        <p>
+          Great! We're almost there. We just need our bash script to look for heic files
+          and then use our magick converter. If you're a masochist you can try to come
+          up with the bash script on your own. Otherwise, I'll show you mine.
+        </p>
 
-          <code>
-            filepath=$1<br>
-            extension="${1##*.}"<br>
-            path_without_extension="${filepath%.*}"<br>
-            &nbsp;<br>
-            if [ "$extension" == "heic" ] || [ "$extension" == "HEIC" ]; then<br>
-            &nbsp;&nbsp;`magick convert $filepath ${path_without_extension}.jpg`<br>
-            fi
-          </code>
+        <code>
+          filepath=$1<br>
+          extension="${1##*.}"<br>
+          path_without_extension="${filepath%.*}"<br>
+          &nbsp;<br>
+          if [ "$extension" == "heic" ] || [ "$extension" == "HEIC" ]; then<br>
+          &nbsp;&nbsp;`magick convert $filepath ${path_without_extension}.jpg`<br>
+          fi
+        </code>
 
-          <p>
-            Go ahead and save this bash script somewhere safe and for
-            good measure make it executable. I called mine <code>heic_to_png.bash</code>
-          </p>
+        <p>
+          Go ahead and save this bash script somewhere safe and for
+          good measure make it executable. I called mine <code>heic_to_png.bash</code>
+        </p>
 
-          <code>
-            $ chmod +x heic_to_png.bash
-          </code>
+        <code>
+          $ chmod +x heic_to_png.bash
+        </code>
 
-          <p>
-            Lastly, run this to start the process of watching your downloads dir.
-          </p>
+        <p>
+          Lastly, run this to start the process of watching your downloads dir.
+        </p>
 
-          <code>
-            $ fswatch -0 ~/Downloads | xargs -0 -I {} sh -c '~/heic_to_png.bash {}'
-          </code>
+        <code>
+          $ fswatch -0 ~/Downloads | xargs -0 -I {} sh -c '~/heic_to_png.bash {}'
+        </code>
 
-          <h2 class="section-heading">Fin</h2>
+        <h2 class="section-heading">Fin</h2>
 
-          <p>
-            You can now airdrop and upload images without worry of <code>HEIC</code> inhabitants,
-            congrats! You could also add this to your startup script for good measure.
-          </p>
-          <!-- <blockquote class="blockquote"></blockquote> -->
-        </div>
+        <p>
+          You can now airdrop and upload images without worry of <code>HEIC</code> inhabitants,
+          congrats! You could also add this to your startup script for good measure.
+        </p>
+        <!-- <blockquote class="blockquote"></blockquote> -->
       </div>
     </div>
-  </article>
-
-  <hr>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <p class="copyright text-muted">Copyright &copy; 2020</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-
-  <script src="../js/clean-blog.min.js"></script>
-</body>
-</html>
+  </div>
+</article>
