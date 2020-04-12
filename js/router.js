@@ -31,6 +31,7 @@ function Router(routes) {
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
           scope.rootElem.innerHTML = this.responseText;
+          window.scrollTo(0,0);
         }
       };
       xhttp.open('GET', url, true);

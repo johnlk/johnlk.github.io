@@ -149,19 +149,24 @@ header.masthead .overlay {
   height: 100%;
   width: 100%;
   background-color: #212529;
-  opacity: .5
+  opacity: .7;
 }
-header.masthead .page-heading, header.masthead .post-heading, header.masthead .site-heading {
+header.masthead .page-heading, header.masthead .site-heading {
   padding: 200px 0 150px;
   color: #fff
 }
+
+header.masthead .post-heading {
+  padding: 100px 0;
+  color: #fff;
+}
 @media only screen and (min-width:768px) {
-  header.masthead .page-heading, header.masthead .post-heading, header.masthead .site-heading {
-    padding: 200px 0
+  header.masthead .page-heading, header.masthead .site-heading {
+    padding: 200px 0;
   }
 }
 header.masthead .page-heading, header.masthead .site-heading {
-  text-align: center
+  text-align: center;
 }
 header.masthead .page-heading h1, header.masthead .site-heading h1 {
   font-size: 50px;
@@ -305,6 +310,13 @@ footer .copyright {
   font-size: 14px;
   margin-bottom: 0;
   text-align: center
+}
+footer .socials a {
+  margin: 0 15px;
+}
+footer .socials a:hover {
+  text-decoration: none;
+  color: black;
 }
 .btn {
   font-size: 14px;
