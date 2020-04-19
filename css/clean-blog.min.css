@@ -19,11 +19,11 @@ a {
   transition: all .2s
 }
 a:focus, a:hover {
-  color: #0085a1
+  color: #0085a1;
 }
 blockquote {
   font-style: italic;
-  color: #868e96
+  text-align: center;
 }
 .section-heading {
   font-size: 36px;
@@ -140,7 +140,9 @@ header.masthead {
   background-color: #868e96;
   background-attachment: scroll;
   position: relative;
-  background-size: cover
+  background-size: cover;
+
+  background-image: url('https://blog123videos.s3.amazonaws.com/tech-blog/masthead.jpg')
 }
 header.masthead .overlay {
   position: absolute;
@@ -340,10 +342,7 @@ footer .socials a:hover {
   font-size: 16px;
   padding: 25px 35px
 }
-code {
-  background-color: #eee;
-  border-radius: 3px;
-  font-family: courier, monospace;
-  padding: 0 3px;
-  color: black;
+.fa-bars::before {
+  content: "\2630";
+  font-style: normal;
 }

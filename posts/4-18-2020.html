@@ -1,0 +1,228 @@
+<!-- Page Header -->
+<header class="masthead">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>
+            Build a SlackBot to keep your company's Corona moral high
+          </h1>
+          <!-- <h2 class="subheading"></h2> -->
+          <span class="meta">Posted on April 18, 2020</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+        <p>
+          Our company has been working from home for about 6 weeks now, and most all
+          of our communication has been over slack. Any sort of personality you've worked
+          hard to build in the office has to be converted into a steady stream of gifs.
+          I figured it might be more enjoyable looking at slack if there were a
+          fun and lighthearted bot responding and livening up the chat.
+        </p>
+
+        <h2 class="section-heading">The goal</h2>
+
+        <p>
+          I want to build out a passive slack bot that quietly does things in the background
+          without announcement. I would rather have an end user be surprised and pleased the
+          bot did something rather than having to remember all the commands associated with
+          it.
+        </p>
+
+        <p>
+          I figure I can achieve this with two different ideas. One, have the bot insert
+          gifs for all one word messages, and two, create a secret password game like on 
+          Pee-wee's playhouse. I figure anytime an employee uses the password in a message
+          the bot let's us know by sending a specific password gif.
+        </p>
+
+        <h2 class="section-heading">Auto Gif Sending</h2>
+
+        <p>
+          Luckily, our company already has a slackbot called "Marvin" which does things like
+          tell us about open pull requests and taking notes on Airtable. We have a heroku http
+          server hosting our bot, and we also have StatusCake ping the instance every 5 mins
+          to keep it alive without having to upgrade from the free tier. For our bot, we built
+          it on ruby using the <a href="https://github.com/slack-ruby/slack-ruby-bot">ruby
+          slack bot</a> gem.
+        </p>
+
+        <p>
+          Using the match feature, we can construct a regex which looks for just one word
+          messages.
+        </p>
+
+        <pre>
+          <code class="language-ruby">
+            require 'slack-ruby-bot'
+
+            class ChatBot < SlackRubyBot::Bot
+              match /^(?<single_word>\w+)$/ do |client, data, match|
+                client.say(text: match[:single_word], channel: data.channel)
+              end
+            end
+
+            ChatBot.run
+          </code>
+        </pre>
+        <blockquote class="blockquote">
+          This block tells the bot to respond back the word just sent for all one word messages.
+        </blockquote>
+
+        <p>
+          You can run your chatbot with this command.
+        </p>
+
+        <pre>
+          <code class="language-bash">
+            $ SLACK_API_TOKEN=... bundle exec ruby chatbot.rb
+          </code>
+        </pre>
+
+        <p>
+          Pulling in the <a href="https://developers.giphy.com/">Giphy API</a> using the
+          <a href="https://github.com/Giphy/giphy-ruby-client">Giphy Client</a> gem, we can do
+          something like this.
+        </p>
+
+        <pre>
+          <code class="language-ruby">
+            require 'slack-ruby-bot'
+
+            class ChatBot < SlackRubyBot::Bot
+              match /^(?<single_word>\w+)$/ do |client, data, match|
+                api_instance = GiphyClient::DefaultApi.new
+
+                api_key = 'YOUR_GIPHY_API_KEY'
+                opts = { 
+                  limit: 1,
+                  offset: rand(25), # get a random offset, to keep it interesting
+                  rating: "g",
+                  lang: "en",
+                  fmt: "json"
+                }
+
+                result = api_instance.gifs_search_get(api_key, match[:single_word], opts)
+
+                # result is an array of gifs, so let's grab the first one
+                client.say(text: result.data.first&.url, channel: data.channel)
+              end
+            end
+
+            ChatBot.run
+          </code>
+        </pre>
+
+        <p>
+          That wasn't so bad at all. And here's the result:
+        </p>
+
+        <img src="https://blog123videos.s3.amazonaws.com/tech-blog/single_word_bot.gif">
+
+        <h2 class="section-heading">The Password Game</h2>
+
+        <p>
+          Once again, with the password game we want to be searching all messages for a regex
+          match, but this time we want to allow the match to happen anywhere in the message.
+          We can use the gem's scan method to look for a match in any part of the message.
+          Let's start with a regular expression like this.
+        </p>
+
+        <pre>
+          <code class="language-ruby">
+            require 'slack-ruby-bot'
+
+            class ChatBot < SlackRubyBot::Bot
+              secret_word = "tacos"
+
+              scan (/(#{secret_word})/) do |client, data, _match|
+                # celebratory gif
+                secret_word_gif = "https://media.giphy.com/media/14ytbNcL4X2gVi/giphy.gif"
+                client.say(text: secret_word_gif, channel: data.channel)
+              end
+            end
+
+            ChatBot.run
+          </code>
+        </pre>
+
+        <p>
+          Great. This code snippet will allow our bot to place a gif anytime we have a message
+          with the hidden password. But what if we want to play too, and don't want to have
+          to deploy every time we change the password? Can we generate one? For that, I found
+          this simple to use gem called <a href="https://github.com/schmich/spicy-proton">Spicy
+          Proton</a>. Word generation is as easy as
+        </p>
+
+        <pre>
+          <code class="language-ruby">
+            secret_word = Spicy::Proton.noun
+          </code>
+        </pre>
+
+        <p>
+          Finally, let's supply a couple of commands to allow the user to guess the secret word,
+          and another for giving up and asking what the secret word is.
+        </p>
+
+        <pre>
+          <code class="language-ruby">
+            require 'slack-ruby-bot'
+
+            class ChatBot < SlackRubyBot::Bot
+              secret_word = "tacos"
+
+              command 'what\'s the password?' do |client, data, _match|
+                client.say(text: secret_word, channel: data.channel)
+              end
+          
+              command 'the password is' do |client, data, match|
+                guessed_word = match['expression']
+          
+                if guessed_word == secret_word
+                  client.say(text: "Well done!", channel: data.channel)
+                  # reset the secret word
+                  secret_word = Spicy::Proton.noun
+                else
+                  client.say(text: "Not quite!", channel: data.channel)
+                end
+              end
+
+              scan (/(#{secret_word})/) do |client, data, _match|
+                # celebratory gif
+                secret_word_gif = "https://media.giphy.com/media/14ytbNcL4X2gVi/giphy.gif"
+                client.say(text: secret_word_gif, channel: data.channel)
+              end
+            end
+
+            ChatBot.run
+          </code>
+        </pre>
+
+        <p>
+          That's all folks, and it didn't take too much work to make it happen. In the following
+          example "chive" is the password.
+        </p>
+
+        <img src="https://blog123videos.s3.amazonaws.com/tech-blog/secret_word.gif">
+
+        <h2 class="section-heading">Future Work</h2>
+
+        <p>
+          It might be nice to work on a leader board of users who have guessed the secret word
+          the most. Or a cron job that displays at the end of the day what the most commonly
+          used emjoi's were. Write me if you'd like to see these come to life.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>

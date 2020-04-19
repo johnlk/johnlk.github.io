@@ -28,10 +28,13 @@ function Router(routes) {
       var url = `${route.isPost ? 'posts/' : 'views/'}${route.htmlName}`;
       var xhttp = new XMLHttpRequest();
 
+
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
           scope.rootElem.innerHTML = this.responseText;
           window.scrollTo(0,0);
+          $('script[src="js/prism.js"]').remove();
+          $('body').append('<script src="js/prism.js"></script>');
         }
       };
       xhttp.open('GET', url, true);

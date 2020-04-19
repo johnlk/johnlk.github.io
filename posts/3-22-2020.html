@@ -18,7 +18,7 @@
 <article>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="col-lg-10 col-md-10 mx-auto">
         <p>
           Apple with the release of their XR phones have decided to make another part
           of my life just a little bit more annoying. I'm sure you've experienced it if
@@ -31,13 +31,13 @@
         <h2 class="section-heading">The goal</h2>
 
         <p>
-          Automatically convert all <code>.HEIC</code> photos to <code>.jpg</code> when
-          added to our <code>~/Downloads</code> directory.
+          Automatically convert all .HEIC photos to .jpg when
+          added to our "~/Downloads" directory.
         </p>
 
         <p>
-          We can use <code>fswatch</code> to wait for changes to the downloads directory,
-          then convert the image files to jpg with a command line tool called <code>imagemagick</code>.
+          We can use fswatch to wait for changes to the downloads directory,
+          then convert the image files to jpg with a command line tool called imagemagick.
           Simple enough.
         </p>
 
@@ -45,22 +45,30 @@
 
         <p>
           Let's install
-          <code>fswatch</code> which works for all major operating systems. I'm working on a
+          fswatch which works for all major operating systems. I'm working on a
           mac so I'm going to install with <a href="https://brew.sh/">Homebrew</a>:
         </p>
 
-        <code>$ brew install fswatch</code>
+        <pre>
+          <code class="language-bash">
+            $ brew install fswatch
+          </code>
+        </pre>
 
         <p>
           Following fswatch's <a href="https://github.com/emcrisostomo/fswatch/wiki/How-to-Use-fswatch">documentation</a>
           we can watch for our Downloads directory with this command. 
         </p>
-        
-        <code>$ fswatch -0 ~/Downloads | xargs -0 -I {} sh -c 'echo ${}'</code>
+
+        <pre>
+          <code class="language-bash">
+            $ fswatch -0 ~/Downloads | xargs -0 -I {} sh -c 'echo ${}'
+          </code>
+        </pre>
 
         <p>
           This will listen for changes on our Downloads directory and then spit out changes
-          to std output. The <code>xargs</code> command is cleaning up our input by ignoring null spaces
+          to std output. The xargs command is cleaning up our input by ignoring null spaces
           and passing off our file name. Now if we can run this command and add a file to our
           downloads directory we'll see this.
         </p>
@@ -70,16 +78,24 @@
 
         <p>
           That's great but now we need a way to convert heic files from the command line.
-          Let's install <code>imagemagick</code> with:
+          Let's install imagemagick with:
         </p>
 
-        <code>$ brew install imagemagick</code>
+        <pre>
+          <code class="language-bash">
+            $ brew install imagemagick
+          </code>
+        </pre>
 
         <p>
           This allows us to run something like this to convert our file.
         </p>
 
-        <code>$ magick convert example_image.HEIC example_image.jpg</code>
+        <pre>
+          <code class="language-bash">
+            $ magick convert example_image.HEIC example_image.jpg
+          </code>
+        </pre>
 
         <p>
           Great! We're almost there. We just need our bash script to look for heic files
@@ -87,40 +103,45 @@
           up with the bash script on your own. Otherwise, I'll show you mine.
         </p>
 
-        <code>
-          filepath=$1<br>
-          extension="${1##*.}"<br>
-          path_without_extension="${filepath%.*}"<br>
-          &nbsp;<br>
-          if [ "$extension" == "heic" ] || [ "$extension" == "HEIC" ]; then<br>
-          &nbsp;&nbsp;`magick convert $filepath ${path_without_extension}.jpg`<br>
-          fi
-        </code>
+        <pre>
+          <code class="language-bash">
+            filepath=$1
+            extension="${1##*.}"
+            path_without_extension="${filepath%.*}"
+
+            if [ "$extension" == "heic" ] || [ "$extension" == "HEIC" ]; then
+              `magick convert $filepath ${path_without_extension}.jpg`
+            fi
+          </code>
+        </pre>
 
         <p>
           Go ahead and save this bash script somewhere safe and for
-          good measure make it executable. I called mine <code>heic_to_png.bash</code>
+          good measure make it executable. I called mine heic_to_png.bash
         </p>
 
-        <code>
-          $ chmod +x heic_to_png.bash
-        </code>
+        <pre>
+          <code class="language-bash">
+            $ chmod +x heic_to_png.bash
+          </code>
+        </pre>
 
         <p>
           Lastly, run this to start the process of watching your downloads dir.
         </p>
 
-        <code>
-          $ fswatch -0 ~/Downloads | xargs -0 -I {} sh -c '~/heic_to_png.bash {}'
-        </code>
+        <pre>
+          <code class="language-bash">
+            $ fswatch -0 ~/Downloads | xargs -0 -I {} sh -c '~/heic_to_png.bash {}'
+          </code>
+        </pre>
 
         <h2 class="section-heading">Fin</h2>
 
         <p>
-          You can now airdrop and upload images without worry of <code>HEIC</code> inhabitants,
+          You can now airdrop and upload images without worry of HEIC inhabitants,
           congrats! You could also add this to your startup script for good measure.
         </p>
-        <!-- <blockquote class="blockquote"></blockquote> -->
       </div>
     </div>
   </div>
