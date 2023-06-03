@@ -1,3 +1,24 @@
-.DS_STORE
-*/.DS_STORE
-.vscode/*
+# dependencies
+node_modules
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+.npm
+web_modules/
+
+# misc
+*.DS_Store
+
+# local env files
+.env
+.env.local
+.env.*.local
+.envrc
+
+# Logs
+logs
+*.log
