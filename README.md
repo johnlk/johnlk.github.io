@@ -4,7 +4,7 @@ Welcome to the repository for my tech blog! This site was most active up until 2
 
 ## Viewing the Blog
 
-You can access the blog by following this link: [Blog](https://johnlk.github.io/)
+You can access the blog by following this link: [Blog](https://johnkuhn.me)
 
 ## Following My Current Work
 
