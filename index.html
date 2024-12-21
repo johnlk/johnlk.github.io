@@ -2,23 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in New York City.">
   <meta name="author" content="John Kuhn">
 
   <title>John Kuhn | CTO and Co-Founder of Integral</title>
 
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="profile">
   <meta property="og:title" content="John Kuhn">
   <meta property="og:description" content="CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in New York City.">
-  <meta property="og:image" content="assets/IMG_1737.JPG">
+  <meta property="og:image" content="assets/headshot.jpeg">
   <meta property="og:url" content="https://johnkuhn.me">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="John Kuhn">
   <meta name="twitter:description" content="CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in New York City.">
-  <meta name="twitter:image" content="assets/IMG_1737.JPG">
+  <meta name="twitter:image" content="assets/headshot.jpeg">
 
-  <link rel="shortcut icon" type="image/jpg" href="assets/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+  <!-- Preload fonts for better performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@400;800&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="./styles.css">
 
   <script type="application/ld+json">
     {
@@ -33,157 +43,42 @@
       "description": "CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in New York City."
     }
   </script>
-
-  <style>
-    body {
-      background-color: #f1f1f4;
-      font-size: 20px;
-      color: #212529;
-      font-family: Lora, 'Times New Roman', serif
-    }
-    p {
-      line-height: 1.5;
-    }
-    p a {
-      text-decoration: underline;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 800;
-      font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
-    }
-    a {
-      color: #212529;
-      transition: all .2s
-    }
-
-    .container {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      top: 40px;
-      justify-content: space-evenly;
-    }
-
-    .card-container {
-      display: flex;
-      flex-direction: column;
-      width: 15rem;
-      background-color: #fff;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px hsl(0deg 0% 40% / 10%);
-      padding: 15px;
-      justify-content: space-between;
-    }
-
-    img {
-      width: 240px;
-      height: 250px;
-    }
-
-    #name {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #4a4a4f;
-    }
-
-    #location {
-      color: #4a4a4f;
-      font-weight: 400;
-      font-size: 1rem;
-    }
-
-    .quick-blurb {
-      margin-top: 8px;
-      color: #636369;
-      font-size: 1rem;
-    }
-
-    .links-container {
-      width: 15rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .links-container div {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .links-container h3 {
-      font-size: .8rem;
-      text-transform: uppercase;
-      line-height: 30px;
-      letter-spacing: .375em;
-      color: #96969c;
-    }
-
-    .links-container a {
-      color: inherit;
-      border-bottom: 1px solid #bdbdc1;
-      text-decoration: none;
-      transition: .2s;
-      line-height: .95rem;
-      width: fit-content;
-      margin-bottom: 1rem;
-      font-family: Palatino;
-      font-size: 1rem;
-    }
-
-    .copyright {
-      font-size: .75rem;
-      margin-top: 10em;
-      text-align: center;
-      color: #96969c;
-    }
-
-    /* mobile breakpoint */
-    @media only screen and (max-width: 700px) {
-      .container {
-        flex-direction: column;
-      }
-      .card-container, .links-container {
-        margin: 0 auto;
-      }
-      .links-container {
-        margin-top: 2em;
-      }
-    }
-  </style>
 </head>
 <body>
-
-  <div class="container">
+  <main class="container">
     <div class="card-container">
       <div class="portrait">
-        <img src="assets/IMG_1737.JPG" alt="John">
+        <img src="assets/headshot.jpeg" alt="John Kuhn's portrait" width="240" height="250" loading="lazy">
       </div>
       <div class="main-info">
-        <div id="name">John Kuhn</div>
-        <div id="location">New York, NY</div>
+        <h1 id="name">John Kuhn</h1>
+        <div id="location">San Francisco, CA</div>
       </div>
       <div class="quick-blurb">
-        Co-founder and CTO of Integral. Former Oliver.Space & Salesforce. Most of my updates live in Twitter.
+        Co-founder and CTO of Integral.
       </div>
     </div>
 
     <div class="links-container">
-      <div class="projects">
+      <section class="projects">
         <h3>Projects</h3>
-        <a href="https://useintegral.com" target="_blank">Integral</a>
-        <a href="https://github.com/Integral-Healthcare/robin-ai-reviewer" target="_blank">Robin AI</a>
-        <a href="https://johnlk.gumroad.com/l/mTRxfQ" target="_blank">New Grad Interview Guide</a>
-      </div>
-      <div class="social">
-        <h3>Socials</h3>
-        
-        <a href="https://twitter.com/johnkuhn58" target="_blank">Twitter</a>
-        <a href="https://github.com/johnlk" target="_blank">GitHub</a>
-        <a href="https://johnlkuhn.medium.com/" target="_blank">Medium</a>
-        <a href="https://johnlk.github.io/Swedish-Blog" target="_blank">Swedish Blog</a>
-      </div>
-    </div>
-  </div>
+        <a href="https://useintegral.com" target="_blank" rel="noopener">Integral</a>
+        <a href="https://github.com/Integral-Healthcare/robin-ai-reviewer" target="_blank" rel="noopener">Robin AI</a>
+        <a href="https://johnlk.gumroad.com/l/mTRxfQ" target="_blank" rel="noopener">New Grad Interview Guide</a>
+      </section>
 
-  <p class="copyright">Copyright &copy; 2023</p>
+      <section class="social">
+        <h3>Socials</h3>
+        <a href="https://x.com/johnkuhn58" target="_blank" rel="noopener">X</a>
+        <a href="https://github.com/johnlk" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://johnlkuhn.medium.com/" target="_blank" rel="noopener">Medium</a>
+        <a href="https://johnlk.github.io/Swedish-Blog" target="_blank" rel="noopener">Swedish Blog</a>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p class="copyright">Copyright &copy; <script>document.write(new Date().getFullYear())</script></p>
+  </footer>
 </body>
 </html>
