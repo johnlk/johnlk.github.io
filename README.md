@@ -38,4 +38,4 @@ To run locally:
 
 ## License
 
-Copyright © 2024 John Kuhn. All rights reserved.
+Copyright © 2026 John Kuhn. All rights reserved.

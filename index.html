@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in New York City.">
+  <meta name="description" content="CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in San Francisco.">
   <meta name="author" content="John Kuhn">
 
   <title>John Kuhn | CTO and Co-Founder of Integral</title>
@@ -11,14 +11,14 @@
   <!-- Open Graph / Social Media Meta Tags -->
   <meta property="og:type" content="profile">
   <meta property="og:title" content="John Kuhn">
-  <meta property="og:description" content="CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in New York City.">
-  <meta property="og:image" content="assets/headshot.jpeg">
+  <meta property="og:description" content="CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in San Francisco.">
+  <meta property="og:image" content="https://johnkuhn.me/assets/headshot.jpeg">
   <meta property="og:url" content="https://johnkuhn.me">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="John Kuhn">
-  <meta name="twitter:description" content="CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in New York City.">
-  <meta name="twitter:image" content="assets/headshot.jpeg">
+  <meta name="twitter:description" content="CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in San Francisco.">
+  <meta name="twitter:image" content="https://johnkuhn.me/assets/headshot.jpeg">
 
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 
@@ -40,7 +40,7 @@
         "@type": "Organization",
         "name": "Integral"
       },
-      "description": "CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in New York City."
+      "description": "CTO and Co-Founder of Integral, an automated compliance engine for life science companies. Creating new projects frequently, including Robin AI for automated pull request reviews. Lives in San Francisco."
     }
   </script>
 </head>
@@ -48,41 +48,46 @@
   <main class="container">
     <div>
       <div class="card-container">
-      <div class="portrait">
-        <img src="assets/headshot.jpeg" alt="John Kuhn's portrait" width="240" height="250" loading="lazy">
-      </div>
-      <div class="main-info">
-        <h1 id="name">John Kuhn</h1>
-        <div id="location">San Francisco, CA</div>
-      </div>
-      <div class="quick-blurb">
-        Co-founder and CTO of Integral.
+        <div class="portrait">
+          <img src="assets/headshot.jpeg" alt="John Kuhn's portrait" width="240" height="250" loading="lazy">
+        </div>
+        <div class="main-info">
+          <h1 id="name">John Kuhn</h1>
+          <div id="location">San Francisco, CA</div>
+        </div>
+        <div class="quick-blurb">
+          Co-founder and CTO of Integral.
+        </div>
       </div>
     </div>
-  </div>
 
-    <div class="links-container">
+    <nav class="links-container">
       <section class="projects">
-        <h3>Projects</h3>
-        <a href="https://useintegral.com" target="_blank" rel="noopener">Integral</a>
-        <a href="https://github.com/Integral-Healthcare/robin-ai-reviewer" target="_blank" rel="noopener">Robin AI</a>
-        <a href="https://github.com/johnlk/ChopinAI" target="_blank" rel="noopener">ChopinAI</a>
-        <a href="https://github.com/johnlk/DinoRunner" target="_blank" rel="noopener">iOS Dino Game</a>
-        <a href="https://johnlk.gumroad.com/l/mTRxfQ" target="_blank" rel="noopener">New Grad Interview Guide</a>
+        <h2>Projects</h2>
+        <ul>
+          <li><a href="https://useintegral.com" target="_blank" rel="noopener">Integral</a></li>
+          <li><a href="https://github.com/Integral-Healthcare/robin-ai-reviewer" target="_blank" rel="noopener">Robin AI</a></li>
+          <li><a href="https://github.com/johnlk/ChopinAI" target="_blank" rel="noopener">ChopinAI</a></li>
+          <li><a href="https://github.com/johnlk/DinoRunner" target="_blank" rel="noopener">iOS Dino Game</a></li>
+          <li><a href="https://johnlk.gumroad.com/l/mTRxfQ" target="_blank" rel="noopener">New Grad Interview Guide</a></li>
+        </ul>
       </section>
 
       <section class="social">
-        <h3>Socials</h3>
-        <a href="https://x.com/johnkuhn58" target="_blank" rel="noopener">X</a>
-        <a href="https://github.com/johnlk" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://johnlkuhn.medium.com/" target="_blank" rel="noopener">Medium</a>
-        <a href="https://johnlk.github.io/Swedish-Blog" target="_blank" rel="noopener">Swedish Blog</a>
+        <h2>Socials</h2>
+        <ul>
+          <li><a href="https://x.com/johnkuhn58" target="_blank" rel="noopener">X</a></li>
+          <li><a href="https://github.com/johnlk" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://johnlkuhn.medium.com/" target="_blank" rel="noopener">Medium</a></li>
+          <li><a href="https://johnlk.github.io/Swedish-Blog" target="_blank" rel="noopener">Swedish Blog</a></li>
+        </ul>
       </section>
-    </div>
+    </nav>
   </main>
 
   <footer>
-    <p class="copyright">Copyright &copy; <script>document.write(new Date().getFullYear())</script></p>
+    <p class="copyright">Copyright &copy; <span id="year"></span></p>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </footer>
 </body>
 </html>
