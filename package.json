@@ -6,7 +6,6 @@
     "check": "node scripts/check.mjs"
   },
   "devDependencies": {
-    "css-tree": "3.2.1",
     "cspell": "9.8.0",
     "html-validate": "10.17.0"
   }
