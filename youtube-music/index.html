@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A Mac app for YouTube Music. There isn't one on the App Store, so this is a small desktop wrapper with its own window, Dock icon, and media keys.">
+  <meta name="author" content="John Kuhn">
+
+  <title>YouTube Music for Mac | John Kuhn</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="YouTube Music for Mac">
+  <meta property="og:description" content="A Mac app for YouTube Music. There isn't one on the App Store, so this is a small desktop wrapper with its own window, Dock icon, and media keys.">
+  <meta property="og:image" content="https://johnkuhn.me/assets/youtube-music.svg">
+  <meta property="og:url" content="https://johnkuhn.me/youtube-music/">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="YouTube Music for Mac">
+  <meta name="twitter:description" content="A Mac app for YouTube Music. There isn't one on the App Store, so this is a small desktop wrapper with its own window, Dock icon, and media keys.">
+  <meta name="twitter:image" content="https://johnkuhn.me/assets/youtube-music.svg">
+
+  <link rel="icon" type="image/svg+xml" href="../assets/youtube-music.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="app-page">
+    <article class="card-container app-card">
+      <a class="back-link" href="../">John Kuhn</a>
+      <img class="app-icon" src="../assets/youtube-music.svg" alt="" width="96" height="96">
+      <h1>YouTube Music</h1>
+      <p class="app-description">
+        A Mac app for YouTube Music, because there still isn't one on the App Store.
+        It gives music.youtube.com its own window, Dock icon, and media keys.
+      </p>
+      <a class="download-button" id="download" href="https://github.com/johnlk/youtube-music-wrapper/releases/latest">Download for Mac</a>
+      <p class="download-meta" id="download-meta">Checking the latest release…</p>
+      <p class="install-note">
+        Open the disk image and drag YouTube Music Wrapper into Applications.
+        If macOS blocks it, right-click the app and choose Open.
+        Unofficial wrapper, not affiliated with Google or YouTube.
+      </p>
+    </article>
+  </main>
+
+  <footer>
+    <p class="copyright">Copyright &copy; <span id="year"></span></p>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+  <script src="../tilt.js" defer></script>
+  <script>
+    (function () {
+      var button = document.getElementById('download');
+      var meta = document.getElementById('download-meta');
+      var releasesUrl = 'https://api.github.com/repos/johnlk/youtube-music-wrapper/releases?per_page=10';
+
+      function macDmg(assets) {
+        var dmgs = (assets || []).filter(function (asset) {
+          return /\.dmg$/i.test(asset.name);
+        });
+        return dmgs.find(function (asset) { return /arm64/i.test(asset.name); }) || dmgs[0] || null;
+      }
+
+      function archLabel(name) {
+        if (/arm64/i.test(name)) return 'Apple silicon';
+        if (/x64|intel/i.test(name)) return 'Intel';
+        return 'Mac';
+      }
+
+      fetch(releasesUrl, { headers: { Accept: 'application/vnd.github+json' } })
+        .then(function (response) {
+          if (!response.ok) throw new Error('release list failed');
+          return response.json();
+        })
+        .then(function (releases) {
+          var match = null;
+          (releases || []).some(function (release) {
+            var dmg = macDmg(release.assets);
+            if (!dmg) return false;
+            match = { release: release, dmg: dmg };
+            return true;
+          });
+          if (!match) throw new Error('no mac build');
+
+          var version = String(match.release.tag_name || '').replace(/^v/, '');
+          var size = Math.round(match.dmg.size / (1024 * 1024));
+          button.href = match.dmg.browser_download_url;
+          meta.textContent = 'Version ' + version + ' · ' + archLabel(match.dmg.name) + ' · ' + size + ' MB';
+        })
+        .catch(function () {
+          meta.textContent = 'The download list didn’t load. This button opens the latest release on GitHub.';
+        });
+    })();
+  </script>
+</body>
+</html>
