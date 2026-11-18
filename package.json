@@ -1,0 +1,13 @@
+{
+  "name": "johnkuhn-me",
+  "private": true,
+  "description": "Checks for the johnkuhn.me static site. The site itself has no build step.",
+  "scripts": {
+    "check": "node scripts/check.mjs"
+  },
+  "devDependencies": {
+    "css-tree": "3.2.1",
+    "cspell": "9.8.0",
+    "html-validate": "10.17.0"
+  }
+}

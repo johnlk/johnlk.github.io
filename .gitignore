@@ -1,5 +1,7 @@
 # misc
 *.DS_Store
+node_modules
+.cspellcache
 
 # local env files
 .env

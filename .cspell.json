@@ -1,0 +1,15 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": ["en_us", "softwareTerms", "html", "css"],
+  "words": [
+    "ChopinAI",
+    "Gumroad",
+    "johnkuhn",
+    "johnlk",
+    "johnlkuhn",
+    "Kuhn",
+    "macOS",
+    "YouTube"
+  ]
+}
