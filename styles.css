@@ -342,10 +342,23 @@ footer {
 
 .app-description {
   margin-top: var(--spacing-sm);
-  max-width: 38ch;
   color: var(--secondary-text);
   font-size: 1rem;
   line-height: 1.5;
+}
+
+.repo-link {
+  margin-top: var(--spacing-sm);
+  font-size: 1rem;
+}
+
+.repo-link a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.repo-link a:hover {
+  text-decoration: underline;
 }
 
 .download-button {
@@ -373,8 +386,18 @@ footer {
   line-height: 1.45;
 }
 
-.install-note {
-  max-width: 42ch;
+.install-note p + p,
+.install-note ol,
+.install-note ol + p {
+  margin-top: 0.65rem;
+}
+
+.install-note ol {
+  padding-left: 1.25rem;
+}
+
+.install-note li + li {
+  margin-top: 0.4rem;
 }
 
 /* Mobile styles */
