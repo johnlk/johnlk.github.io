@@ -281,7 +281,7 @@ async function checkDownload() {
   try {
     const response = await fetch(match.dmg.browser_download_url, {
       method: "HEAD",
-      headers,
+      headers: { "User-Agent": "johnkuhn-me-checks" },
       redirect: "follow",
       signal: AbortSignal.timeout(20000),
     });
