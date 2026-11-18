@@ -213,12 +213,10 @@ img {
 .projects li:nth-child(3) { animation-delay: 0.3s; }
 .projects li:nth-child(4) { animation-delay: 0.35s; }
 .projects li:nth-child(5) { animation-delay: 0.4s; }
+.projects li:nth-child(6) { animation-delay: 0.45s; }
 
 /* Staggered entrance - Socials */
 .social li:nth-child(1) { animation-delay: 0.45s; }
-.social li:nth-child(2) { animation-delay: 0.5s; }
-.social li:nth-child(3) { animation-delay: 0.55s; }
-.social li:nth-child(4) { animation-delay: 0.6s; }
 
 .links-container a {
   color: inherit;
@@ -299,6 +297,84 @@ footer {
   .links-container a::before {
     transition: none;
   }
+}
+
+/* App page */
+.app-page {
+  width: min(32rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.app-card {
+  width: 100%;
+  padding: var(--spacing-lg);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--spacing-md);
+  color: var(--muted-text);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--secondary-text);
+}
+
+.app-icon {
+  width: 96px;
+  height: 96px;
+  margin: var(--spacing-xs) 0 var(--spacing-md);
+  border-radius: 0;
+  filter:
+    drop-shadow(0 0 0.6px rgba(255, 255, 255, 0.55))
+    drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
+}
+
+.app-card h1 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.app-description {
+  margin-top: var(--spacing-sm);
+  max-width: 38ch;
+  color: var(--secondary-text);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.download-button {
+  display: inline-block;
+  margin-top: var(--spacing-lg);
+  padding: 0.7rem 1.15rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  color: #fff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.download-button:hover {
+  filter: brightness(1.08);
+}
+
+.download-meta,
+.install-note {
+  margin-top: var(--spacing-sm);
+  color: var(--muted-text);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.install-note {
+  max-width: 42ch;
 }
 
 /* Mobile styles */
